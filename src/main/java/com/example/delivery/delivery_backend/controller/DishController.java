@@ -19,7 +19,7 @@ public class DishController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Dish> getDishById(@PathVariable String id) {
+    public ResponseEntity<Dish> getDishById(@PathVariable Long id) {
         Dish dish = dishService.getDishById(id);
         if (dish != null) {
             return ResponseEntity.ok(dish);
@@ -34,7 +34,7 @@ public class DishController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Dish> updateDish(@PathVariable String id, @RequestBody Dish dishDetails) {
+    public ResponseEntity<Dish> updateDish(@PathVariable Long id, @RequestBody Dish dishDetails) {
         Dish updatedDish = dishService.updateDish(id, dishDetails);
         if (updatedDish != null) {
             return ResponseEntity.ok(updatedDish);
@@ -44,7 +44,7 @@ public class DishController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDish(@PathVariable String id) {
+    public ResponseEntity<Void> deleteDish(@PathVariable Long id) {
         dishService.deleteDish(id);
         return ResponseEntity.noContent().build();
     }

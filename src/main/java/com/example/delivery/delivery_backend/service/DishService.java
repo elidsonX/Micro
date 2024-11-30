@@ -20,12 +20,12 @@ public class DishService {
         return dishRepository.save(dish);
     }
 
-    public Dish getDishById(String id) {
+    public Dish getDishById(Long id) {
         Optional<Dish> dishOptional = dishRepository.findById(id);
         return dishOptional.orElse(null);
     }
 
-    public Dish updateDish(String id, Dish dishDetails) {
+    public Dish updateDish(Long id, Dish dishDetails) {
         Optional<Dish> dish = dishRepository.findById(id);
         if (dish.isPresent()) {
             Dish existingDish = dish.get();
@@ -38,7 +38,7 @@ public class DishService {
         return null;
     }
 
-    public void deleteDish(String id) {
+    public void deleteDish(Long id) {
         dishRepository.deleteById(id);
     }
 }
