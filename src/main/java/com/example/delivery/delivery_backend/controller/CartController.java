@@ -20,7 +20,7 @@ public class CartController {
         return ResponseEntity.ok(cartService.getCartItems());
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<CartItem> addToCart(@RequestBody CartItem item) {
         return ResponseEntity.ok(cartService.addToCart(item));
     }
@@ -31,7 +31,7 @@ public class CartController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/clear")
+    @DeleteMapping
     public ResponseEntity<Void> clearCart() {
         cartService.clearCart();
         return ResponseEntity.ok().build();

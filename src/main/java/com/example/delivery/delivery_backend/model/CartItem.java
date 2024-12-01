@@ -2,6 +2,7 @@ package com.example.delivery.delivery_backend.model;
 
 import javax.persistence.*;
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
@@ -17,7 +18,8 @@ public class CartItem {
     private int quantity;
     private String observacao;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
+    @JsonIgnore
     private Order order;
 }
