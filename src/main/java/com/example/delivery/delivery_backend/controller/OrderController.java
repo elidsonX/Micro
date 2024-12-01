@@ -1,6 +1,6 @@
 package com.example.delivery.delivery_backend.controller;
 
-import com.example.delivery.delivery_backend.model.CartItem;
+import com.example.delivery.delivery_backend.model.OrderItem;
 import com.example.delivery.delivery_backend.model.Order;
 import com.example.delivery.delivery_backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +23,15 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody List<CartItem> cartItems) {
-        return ResponseEntity.ok(orderService.createOrder(cartItems));
+    public ResponseEntity<Order> createOrder(@RequestBody List<OrderItem> orderItems) {
+        System.out.println("Received order items: " + orderItems);
+        try {
+            Order createdOrder = orderService.createOrder(orderItems);
+            return ResponseEntity.ok(createdOrder);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
     @PutMapping("/{id}/status")

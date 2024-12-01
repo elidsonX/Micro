@@ -1,6 +1,6 @@
 package com.example.delivery.delivery_backend.service;
 
-import com.example.delivery.delivery_backend.model.CartItem;
+import com.example.delivery.delivery_backend.model.OrderItem;
 import com.example.delivery.delivery_backend.model.Order;
 import com.example.delivery.delivery_backend.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,24 +20,27 @@ public class OrderService {
     }
 
     @Transactional
-    public Order createOrder(List<CartItem> cartItems) {
+    public Order createOrder(List<OrderItem> orderItems) {
+        System.out.println("Creating order with items: " + orderItems);
+        
         Order order = new Order();
         order.setStatus("PENDING");
-        order = orderRepository.save(order);
         
-        for (CartItem item : cartItems) {
-            CartItem newItem = new CartItem();
+        for (OrderItem item : orderItems) {
+            OrderItem newItem = new OrderItem();
             newItem.setName(item.getName());
             newItem.setDescription(item.getDescription());
             newItem.setPrice(item.getPrice());
             newItem.setImage(item.getImage());
             newItem.setQuantity(item.getQuantity());
             newItem.setObservacao(item.getObservacao());
-            newItem.setOrder(order);
-            order.getItems().add(newItem);
+            order.addItem(newItem);
         }
         
-        return orderRepository.save(order);
+        order = orderRepository.save(order);
+        System.out.println("Order created: " + order);
+        
+        return order;
     }
 
     public String updateOrderStatus(Long id, String status) {
