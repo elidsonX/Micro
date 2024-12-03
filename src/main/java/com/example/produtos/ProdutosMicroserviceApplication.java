@@ -1,11 +1,12 @@
-package com.example.delivery.delivery_backend;
+package com.example.produtos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DeliveryBackendApplication {
+public class ProdutosMicroserviceApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(DeliveryBackendApplication.class, args);
+        SpringApplication.run(ProdutosMicroserviceApplication.class, args);
     }
 }
