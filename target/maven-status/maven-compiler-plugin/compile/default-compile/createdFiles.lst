@@ -1,0 +1,11 @@
+com\example\produtos\service\ProdutoService.class
+com\example\produtos\controller\ProdutoController.class
+com\example\produtos\config\SecurityConfig.class
+com\example\produtos\config\WebConfig.class
+com\example\produtos\config\SwaggerConfig.class
+com\example\produtos\service\ProdutoServiceTest.class
+com\example\produtos\model\Produto.class
+com\example\produtos\controller\ProdutoControllerTest.class
+com\example\produtos\dto\ProdutoDTO.class
+com\example\produtos\repository\ProdutoRepository.class
+com\example\produtos\exception\GlobalExceptionHandler.class
