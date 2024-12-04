@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EstoqueController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Produtos Microservice</a> &gt; <a href="index.source.html" class="el_package">com.example.produtos.controller</a> &gt; <span class="el_source">EstoqueController.java</span></div><h1>EstoqueController.java</h1><pre class="source lang-java linenums">package com.example.produtos.controller;
+
+import com.example.produtos.dto.EstoqueDTO;
+import com.example.produtos.model.Estoque;
+import com.example.produtos.service.EstoqueService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/api/estoques&quot;)
+<span class="fc" id="L15">public class EstoqueController {</span>
+
+    @Autowired
+    private EstoqueService estoqueService;
+
+    @PutMapping(&quot;/{produtoId}&quot;)
+    public ResponseEntity&lt;Estoque&gt; atualizarEstoque(@PathVariable Long produtoId, @Valid @RequestBody EstoqueDTO estoqueDTO) {
+<span class="nc" id="L22">        return ResponseEntity.ok(estoqueService.atualizarEstoque(produtoId, estoqueDTO));</span>
+    }
+
+    @GetMapping(&quot;/{produtoId}&quot;)
+    public ResponseEntity&lt;Estoque&gt; buscarEstoque(@PathVariable Long produtoId) {
+<span class="nc" id="L27">        return ResponseEntity.ok(estoqueService.buscarEstoque(produtoId));</span>
+    }
+
+    @GetMapping
+    public ResponseEntity&lt;List&lt;Estoque&gt;&gt; listarEstoques() {
+<span class="nc" id="L32">        return ResponseEntity.ok(estoqueService.listarEstoques());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,1 +1,3 @@
+com\example\produtos\controller\ProdutoControllerIntegrationTest.class
 com\example\produtos\service\ProdutoServiceTest.class
+com\example\produtos\ProdutosMicroserviceApplicationTests.class

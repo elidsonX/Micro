@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CategoriaService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Produtos Microservice</a> &gt; <a href="index.source.html" class="el_package">com.example.produtos.service</a> &gt; <span class="el_source">CategoriaService.java</span></div><h1>CategoriaService.java</h1><pre class="source lang-java linenums">package com.example.produtos.service;
+
+import com.example.produtos.dto.CategoriaDTO;
+import com.example.produtos.model.Categoria;
+import com.example.produtos.repository.CategoriaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityNotFoundException;
+import java.util.List;
+
+@Service
+<span class="fc" id="L13">public class CategoriaService {</span>
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
+    public Categoria criarCategoria(CategoriaDTO categoriaDTO) {
+<span class="nc" id="L19">        Categoria categoria = new Categoria();</span>
+<span class="nc" id="L20">        categoria.setNome(categoriaDTO.getNome());</span>
+<span class="nc" id="L21">        categoria.setDescricao(categoriaDTO.getDescricao());</span>
+<span class="nc" id="L22">        return categoriaRepository.save(categoria);</span>
+    }
+
+    public Categoria buscarCategoria(Long id) {
+<span class="nc" id="L26">        return categoriaRepository.findById(id)</span>
+<span class="nc" id="L27">                .orElseThrow(() -&gt; new EntityNotFoundException(&quot;Categoria não encontrada&quot;));</span>
+    }
+
+    public List&lt;Categoria&gt; listarCategorias() {
+<span class="nc" id="L31">        return categoriaRepository.findAll();</span>
+    }
+
+    public Categoria atualizarCategoria(Long id, CategoriaDTO categoriaDTO) {
+<span class="nc" id="L35">        Categoria categoria = buscarCategoria(id);</span>
+<span class="nc" id="L36">        categoria.setNome(categoriaDTO.getNome());</span>
+<span class="nc" id="L37">        categoria.setDescricao(categoriaDTO.getDescricao());</span>
+<span class="nc" id="L38">        return categoriaRepository.save(categoria);</span>
+    }
+
+    public void deletarCategoria(Long id) {
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        if (!categoriaRepository.existsById(id)) {</span>
+<span class="nc" id="L43">            throw new EntityNotFoundException(&quot;Categoria não encontrada&quot;);</span>
+        }
+<span class="nc" id="L45">        categoriaRepository.deleteById(id);</span>
+<span class="nc" id="L46">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

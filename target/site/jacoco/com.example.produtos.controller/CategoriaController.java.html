@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CategoriaController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Produtos Microservice</a> &gt; <a href="index.source.html" class="el_package">com.example.produtos.controller</a> &gt; <span class="el_source">CategoriaController.java</span></div><h1>CategoriaController.java</h1><pre class="source lang-java linenums">package com.example.produtos.controller;
+
+import com.example.produtos.dto.CategoriaDTO;
+import com.example.produtos.model.Categoria;
+import com.example.produtos.service.CategoriaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/api/categorias&quot;)
+<span class="fc" id="L16">public class CategoriaController {</span>
+
+    @Autowired
+    private CategoriaService categoriaService;
+
+    @PostMapping
+    public ResponseEntity&lt;Categoria&gt; criarCategoria(@Valid @RequestBody CategoriaDTO categoriaDTO) {
+<span class="nc" id="L23">        return new ResponseEntity&lt;&gt;(categoriaService.criarCategoria(categoriaDTO), HttpStatus.CREATED);</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Categoria&gt; buscarCategoria(@PathVariable Long id) {
+<span class="nc" id="L28">        return ResponseEntity.ok(categoriaService.buscarCategoria(id));</span>
+    }
+
+    @GetMapping
+    public ResponseEntity&lt;List&lt;Categoria&gt;&gt; listarCategorias() {
+<span class="nc" id="L33">        return ResponseEntity.ok(categoriaService.listarCategorias());</span>
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Categoria&gt; atualizarCategoria(@PathVariable Long id, @Valid @RequestBody CategoriaDTO categoriaDTO) {
+<span class="nc" id="L38">        return ResponseEntity.ok(categoriaService.atualizarCategoria(id, categoriaDTO));</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deletarCategoria(@PathVariable Long id) {
+<span class="nc" id="L43">        categoriaService.deletarCategoria(id);</span>
+<span class="nc" id="L44">        return ResponseEntity.noContent().build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

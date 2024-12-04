@@ -20,7 +20,7 @@ public class ProdutoService {
         produto.setNome(produtoDTO.getNome());
         produto.setDescricao(produtoDTO.getDescricao());
         produto.setPreco(produtoDTO.getPreco());
-        produto.setQuantidade(0); // Definindo quantidade inicial como 0
+        produto.setQuantidade(produtoDTO.getQuantidade()); // Usar a quantidade fornecida pelo usuário
         return produtoRepository.save(produto);
     }
 
