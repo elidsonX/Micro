@@ -17,9 +17,13 @@ public class SecurityConfig {
             .authorizeRequests()
                 .antMatchers("/api/**").permitAll()
                 .antMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                .antMatchers("/h2-console/**").permitAll() // Permite acesso ao console H2
                 .anyRequest().authenticated()
             .and()
+            .headers().frameOptions().sameOrigin() // Permite que o console H2 seja exibido em um iframe
+            .and()
             .httpBasic();
+        
         return http.build();
     }
 }
