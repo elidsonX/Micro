@@ -1,4 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.example.produtos.controller.ProdutoControllerIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.909 s - in com.example.produtos.controller.ProdutoControllerIntegrationTest
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 6.839 s <<< FAILURE! - in com.example.produtos.controller.ProdutoControllerIntegrationTest
+buscarProduto_QuandoProdutoExiste_DeveRetornarProduto  Time elapsed: 0.292 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<401>
+	at com.example.produtos.controller.ProdutoControllerIntegrationTest.buscarProduto_QuandoProdutoExiste_DeveRetornarProduto(ProdutoControllerIntegrationTest.java:63)
+
+criarProduto_DeveRetornarProdutoCriado  Time elapsed: 0.033 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<201> but was:<401>
+	at com.example.produtos.controller.ProdutoControllerIntegrationTest.criarProduto_DeveRetornarProdutoCriado(ProdutoControllerIntegrationTest.java:46)
+
