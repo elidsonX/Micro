@@ -20,12 +20,12 @@ import java.util.List;
 
     @PostMapping
     public ResponseEntity&lt;Produto&gt; criarProduto(@Valid @RequestBody ProdutoDTO produtoDTO) {
-<span class="fc" id="L23">        return new ResponseEntity&lt;&gt;(produtoService.criarProduto(produtoDTO), HttpStatus.CREATED);</span>
+<span class="nc" id="L23">        return new ResponseEntity&lt;&gt;(produtoService.criarProduto(produtoDTO), HttpStatus.CREATED);</span>
     }
 
     @GetMapping(&quot;/{id}&quot;)
     public ResponseEntity&lt;Produto&gt; buscarProduto(@PathVariable Long id) {
-<span class="fc" id="L28">        return ResponseEntity.ok(produtoService.buscarProduto(id));</span>
+<span class="nc" id="L28">        return ResponseEntity.ok(produtoService.buscarProduto(id));</span>
     }
 
     @GetMapping

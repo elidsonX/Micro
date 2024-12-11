@@ -37,12 +37,12 @@ import org.springframework.security.web.SecurityFilterChain;
     @Bean
     @Profile(&quot;test&quot;)
     public SecurityFilterChain testFilterChain(HttpSecurity http) throws Exception {
-<span class="fc" id="L40">        http</span>
-<span class="fc" id="L41">            .csrf().disable()</span>
-<span class="fc" id="L42">            .authorizeRequests()</span>
-<span class="fc" id="L43">                .anyRequest().permitAll();</span>
+<span class="nc" id="L40">        http</span>
+<span class="nc" id="L41">            .csrf().disable()</span>
+<span class="nc" id="L42">            .authorizeRequests()</span>
+<span class="nc" id="L43">                .anyRequest().permitAll();</span>
         
-<span class="fc" id="L45">        return http.build();</span>
+<span class="nc" id="L45">        return http.build();</span>
     }
 
     @Bean
